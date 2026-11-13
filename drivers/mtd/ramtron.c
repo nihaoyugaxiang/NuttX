@@ -687,6 +687,7 @@ static ssize_t ramtron_bwrite(FAR struct mtd_dev_s *dev,
         }
 
       startblock++;
+      buffer += 1 << priv->pageshift;
     }
 
   ramtron_unlock(priv->dev);
@@ -738,6 +739,8 @@ static ssize_t ramtron_bwrite_chunked(FAR struct mtd_dev_s *dev,
 
           newstartblock++;
         }
+
+      buffer += 1 << priv->pageshift;
     }
 
 out:
